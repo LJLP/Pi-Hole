@@ -1,6 +1,8 @@
 {
-    "version": "",
-    "thumbnail": "",
-    "id": "",
-    "name": ""
+    "version": "1.0.0-beta",
+    "thumbnail": "store/Thumbnail.png",
+    "id": "com_core447_Pi-hole",
+    "name": "Pi-hole",
+    "short-description": "Control and monitor Pi-hole",
+    "description": "This plugins allows you to control and monitor you Pi-hole server"
 }
