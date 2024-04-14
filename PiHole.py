@@ -11,7 +11,7 @@ class PiHole:
         if not self.get_valid_credentials(): return
 
         try:
-            resp = requests.get(f"{self.protocol}://{self.ip_address}/admin/api.php?summaryRaw&auth={self.api_token}", timeout=1.5)
+            resp = requests.get(f"{self.protocol}://{self.ip_address}/admin/api.php?summaryRaw&auth={self.api_token}", timeout=2.5)
         except Exception as e:
             log.error(e)
             return
@@ -27,7 +27,7 @@ class PiHole:
         if not self.get_valid_credentials(): return
 
         try:
-            resp = requests.get(f"{self.protocol}://{self.ip_address}/admin/api.php?disable={time}&auth={self.api_token}", timeout=1.5)
+            resp = requests.get(f"{self.protocol}://{self.ip_address}/admin/api.php?disable={time}&auth={self.api_token}", timeout=2.5)
         except Exception as e:
             log.error(e)
             return
@@ -47,7 +47,7 @@ class PiHole:
         if not self.get_valid_credentials(): return
 
         try:
-            resp = requests.get(f"{self.protocol}://{self.ip_address}/admin/api.php?enable&auth={self.api_token}", timeout=1.5)
+            resp = requests.get(f"{self.protocol}://{self.ip_address}/admin/api.php?enable&auth={self.api_token}", timeout=2.5)
         except Exception as e:
             log.error(e)
             return
@@ -57,7 +57,7 @@ class PiHole:
         if not self.get_valid_credentials(): return
 
         try:
-            resp = requests.get(f"{self.protocol}://{self.ip_address}/admin/api.php?disable={time}&auth={self.api_token}", timeout=1.5)
+            resp = requests.get(f"{self.protocol}://{self.ip_address}/admin/api.php?disable={time}&auth={self.api_token}", timeout=2.5)
         except Exception as e:
             log.error(e)
             return
