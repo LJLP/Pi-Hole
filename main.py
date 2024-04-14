@@ -5,6 +5,7 @@ from src.backend.PluginManager.ActionHolder import ActionHolder
 # Import actions
 from .actions.ToggleState.ToggleState import ToggleState
 from .actions.Disable.Disable import Disable
+from .actions.Info.Info import Info
 
 from .PiHole import PiHole
 
@@ -30,6 +31,14 @@ class PiHolePlugin(PluginBase):
             action_name = "Disable",
         )
         self.add_action_holder(self.disable_holder)
+
+        self.info_holder = ActionHolder(
+            plugin_base = self,
+            action_base = Info,
+            action_id = "dev_core447_Pi-hole::Info",
+            action_name = self.lm.get("actions.info.name")
+        )
+        self.add_action_holder(self.info_holder)
 
         # Register plugin
         self.register(
