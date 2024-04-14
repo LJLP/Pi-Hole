@@ -3,25 +3,47 @@ from src.backend.PluginManager.PluginBase import PluginBase
 from src.backend.PluginManager.ActionHolder import ActionHolder
 
 # Import actions
-from .actions.SimpleAction.SimpleAction import SimpleAction
+from .actions.ToggleState.ToggleState import ToggleState
+from .actions.Disable.Disable import Disable
 
-class PluginTemplate(PluginBase):
+from .PiHole import PiHole
+
+class PiHolePlugin(PluginBase):
     def __init__(self):
         super().__init__()
 
+        self.init_vars()
+
         ## Register actions
-        self.simple_action_holder = ActionHolder(
+        self.disable_holder = ActionHolder(
             plugin_base = self,
-            action_base = SimpleAction,
-            action_id = "dev_core447_Template::SimpleAction", # Change this to your own plugin id
-            action_name = "Simple Action",
+            action_base = ToggleState,
+            action_id = "dev_core447_Pi-hole::ToggleState",
+            action_name = "Toggle State",
         )
-        self.add_action_holder(self.simple_action_holder)
+        self.add_action_holder(self.disable_holder)
+
+        self.disable_holder = ActionHolder(
+            plugin_base = self,
+            action_base = Disable,
+            action_id = "dev_core447_Pi-hole::Disable",
+            action_name = "Disable",
+        )
+        self.add_action_holder(self.disable_holder)
 
         # Register plugin
         self.register(
-            plugin_name = "Template",
-            github_repo = "https://github.com/StreamController/PluginTemplate",
+            plugin_name = "Pi-hole",
+            github_repo = "https://github.com/StreamController/Pi-hole",
             plugin_version = "1.0.0",
             app_version = "1.1.1-alpha"
+        )
+
+    def init_vars(self):
+        self.lm = self.locale_manager
+
+        settings = self.get_settings()
+        self.ph = PiHole(
+            ip_address=settings.get("ip"),
+            api_token=settings.get("token")
         )

@@ -1,0 +1,1 @@
+This plugin is not affiliated with pi-hole in any way.
