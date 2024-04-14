@@ -20,7 +20,7 @@ class PiHolePlugin(PluginBase):
             plugin_base = self,
             action_base = ToggleState,
             action_id = "dev_core447_Pi-hole::ToggleState",
-            action_name = "Toggle State",
+            action_name = self.lm.get("actions.toggle.name")
         )
         self.add_action_holder(self.disable_holder)
 
@@ -28,7 +28,7 @@ class PiHolePlugin(PluginBase):
             plugin_base = self,
             action_base = Disable,
             action_id = "dev_core447_Pi-hole::Disable",
-            action_name = "Disable",
+            action_name = self.lm.get("actions.disable.name")
         )
         self.add_action_holder(self.disable_holder)
 
@@ -42,10 +42,10 @@ class PiHolePlugin(PluginBase):
 
         # Register plugin
         self.register(
-            plugin_name = "Pi-hole",
+            plugin_name = self.lm.get("plugin.name"),
             github_repo = "https://github.com/StreamController/Pi-hole",
             plugin_version = "1.0.0",
-            app_version = "1.1.1-alpha"
+            app_version = "1.4.10-beta"
         )
 
     def init_vars(self):

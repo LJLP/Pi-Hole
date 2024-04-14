@@ -1,0 +1,15 @@
+{
+    "plugin.name": "Pi-hole",
+    "actions.info.name": "Info",
+    "actions.toggle.name": "Toggle active",
+    "actions.disable.name": "Disable",
+    "actions.info.link.label": "Checkout how to use the labels on",
+    "actions.info.link.text": "GitHub",
+    "actions.info.top-label.title": "Top",
+    "actions.info.center-label.title": "Center",
+    "actions.info.bottom-label.title": "Bottom",
+    "actions.base.ip.label": "IP",
+    "actions.base.password.label": "Password",
+    "actions.disable.time.label": "Disable for (s)",
+    "actions.disable.time.subtitle": "Time to disabe Pi-hole, 0 for permanent"
+}
