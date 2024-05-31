@@ -22,7 +22,7 @@ class HoleActionBase(ActionBase):
 
     def get_config_rows(self) -> list:
         self.ip_entry = Adw.EntryRow(title=self.plugin_base.lm.get("actions.base.ip.label"))
-        self.token_entry = Adw.PasswordEntryRow(title=self.plugin_base.lm.get("actions.base.password.label"))
+        self.token_entry = Adw.PasswordEntryRow(title=self.plugin_base.lm.get("actions.base.api-key.label"))
 
         self.load_config_defaults()
 

@@ -9,7 +9,7 @@
     "actions.info.center-label.title": "Center",
     "actions.info.bottom-label.title": "Bottom",
     "actions.base.ip.label": "IP",
-    "actions.base.password.label": "Password",
+    "actions.base.api-key.label": "API Key",
     "actions.disable.time.label": "Disable for (s)",
     "actions.disable.time.subtitle": "Time to disabe Pi-hole, 0 for permanent"
 }
