@@ -1,6 +1,8 @@
 # Import StreamController modules
 from src.backend.PluginManager.PluginBase import PluginBase
 from src.backend.PluginManager.ActionHolder import ActionHolder
+from src.backend.DeckManagement.InputIdentifier import Input
+from src.backend.PluginManager.ActionInputSupport import ActionInputSupport
 
 # Import actions
 from .actions.ToggleState.ToggleState import ToggleState
@@ -19,24 +21,39 @@ class PiHolePlugin(PluginBase):
         self.disable_holder = ActionHolder(
             plugin_base = self,
             action_base = ToggleState,
-            action_id = "dev_core447_Pi-hole::ToggleState",
-            action_name = self.lm.get("actions.toggle.name")
+            action_id_suffix = "ToggleState",
+            action_name = self.lm.get("actions.toggle.name"),
+            action_support={
+                Input.Key: ActionInputSupport.SUPPORTED,
+                Input.Dial: ActionInputSupport.SUPPORTED,
+                Input.Touchscreen: ActionInputSupport.UNTESTED
+            }
         )
         self.add_action_holder(self.disable_holder)
 
         self.disable_holder = ActionHolder(
             plugin_base = self,
             action_base = Disable,
-            action_id = "dev_core447_Pi-hole::Disable",
-            action_name = self.lm.get("actions.disable.name")
+            action_id_suffix = "Disable",
+            action_name = self.lm.get("actions.disable.name"),
+            action_support={
+                Input.Key: ActionInputSupport.SUPPORTED,
+                Input.Dial: ActionInputSupport.SUPPORTED,
+                Input.Touchscreen: ActionInputSupport.UNTESTED
+            }
         )
         self.add_action_holder(self.disable_holder)
 
         self.info_holder = ActionHolder(
             plugin_base = self,
             action_base = Info,
-            action_id = "dev_core447_Pi-hole::Info",
-            action_name = self.lm.get("actions.info.name")
+            action_id_suffix = "Info",
+            action_name = self.lm.get("actions.info.name"),
+            action_support={
+                Input.Key: ActionInputSupport.SUPPORTED,
+                Input.Dial: ActionInputSupport.SUPPORTED,
+                Input.Touchscreen: ActionInputSupport.UNSUPPORTED
+            }
         )
         self.add_action_holder(self.info_holder)
 
