@@ -60,13 +60,16 @@ class HoleActionBase(ActionBase):
 
     def show(self):
         def _show(self: "HoleActionBase"):
-            enabled = self.plugin_base.ph.get_enabled()
-            if enabled is None:
-                self.set_media(media_path=os.path.join(self.plugin_base.PATH, "assets", "no-connection.png"), size=0.85)
-            elif enabled:
-                self.set_media(media_path=os.path.join(self.plugin_base.PATH, "assets", "active.png"), size=0.85)
-            else:
-                self.set_media(media_path=os.path.join(self.plugin_base.PATH, "assets", "inactive.png"), size=0.85)
-
+            try:
+                enabled = self.plugin_base.ph.get_enabled()
+                if enabled is None:
+                    self.set_media(media_path=os.path.join(self.plugin_base.PATH, "assets", "no-connection.png"), size=0.85)
+                elif enabled:
+                    self.set_media(media_path=os.path.join(self.plugin_base.PATH, "assets", "active.png"), size=0.85)
+                else:
+                    self.set_media(media_path=os.path.join(self.plugin_base.PATH, "assets", "inactive.png"), size=0.85)
+            except Exception as e:
+                log.error(f"[API CLIENT] Error in _show(): {e}")
+                
         thread = threading.Thread(target=_show, args=(self,), daemon=True, name="show")
         thread.start()
