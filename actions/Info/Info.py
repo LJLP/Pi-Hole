@@ -81,8 +81,6 @@ class Info(HoleActionBase):
     def inject_data(self, label: str, data: dict) -> str:
         for key in data:
             value = data[key]
-            if key in ["gravity_last_updated"]:
-                continue
 
             if isinstance(value, float):
                 value = round(value)
@@ -130,6 +128,7 @@ class Info(HoleActionBase):
                     :return: flattened dictionary
                     """
                     log.debug(f"flatten called with type: {type(nested_dict)}, value: {nested_dict}")
+                    
                     assert isinstance(nested_dict, dict), "flatten requires a dictionary input"
                     assert isinstance(separator, six.string_types), "separator must be string"
 
@@ -185,10 +184,7 @@ class Info(HoleActionBase):
             status = self.plugin_base.ph.get_summary()
             if status is None:
                 return
-
-            log.debug(f"Status is of type: {type(status)}")  # Debugging
-            log.debug(f"Here is the content of staus: {status}")
-
+            
             status = flatten(status)  # Flatten the nested dictionary
 
             top = self.inject_data(settings.get("labels", {}).get("top", ""), status)
