@@ -9,6 +9,7 @@ class PiHole:
         self.api_token = api_token
         self.protocol = protocol
         self.sid_token = None
+        self.csrf_token = None
         self.headers = {}
         self.authenticate()
         log.debug("PiHole API Class initialized")
