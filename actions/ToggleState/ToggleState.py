@@ -29,6 +29,6 @@ class ToggleState(HoleActionBase):
         if self.plugin_base.ph.get_enabled():
             self.plugin_base.ph.disable(0)
         else:
-            self.plugin_base.ph.enable()
+            self.plugin_base.ph.enable(0)
 
         self.show()
