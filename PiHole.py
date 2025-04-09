@@ -15,6 +15,10 @@ class PiHole:
         log.debug("PiHole API Class initialized")
 
     def authenticate(self):
+        if not self.protocol or not self.ip_address:
+            log.trace("No protocol or IP address provided. Cannot authenticate.")
+            return
+        
         """
         Authenticate and store the API token.
         """
@@ -50,6 +54,11 @@ class PiHole:
         :param data: Optional JSON payload for POST requests
         :return: JSON response or None
         """
+        if not self.ip_address or not self.api_token:
+            log.trace("No IP address or API token provided. Cannot make request.")
+            return None
+        
+
         if not self.sid_token:
             log.error("[Request Error] No valid authentication token. Re-authenticating...")
             self.authenticate()
