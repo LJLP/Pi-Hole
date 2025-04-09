@@ -19,7 +19,7 @@ from gi.repository import Gtk, Adw
 from ..HoleActionBase import HoleActionBase
 
 import logging
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.ERROR)
 log = logging.getLogger(__name__)
 
 class Info(HoleActionBase):
